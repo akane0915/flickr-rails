@@ -9,6 +9,8 @@ class User < ApplicationRecord
     :validatable,
     :authentication_keys => [:login]
 
+  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100#" }, :default_url => "/images/:style/missing.png"
+
   attr_accessor :login
 
   validates :username,
@@ -18,6 +20,8 @@ class User < ApplicationRecord
   }
 
   validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
+
+  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
   validate :validate_username
 
