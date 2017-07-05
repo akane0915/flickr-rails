@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   has_many :images
-  
+
   devise :database_authenticatable,
     :registerable,
     :recoverable,
@@ -16,6 +16,12 @@ class User < ApplicationRecord
   attr_accessor :login
 
   validates :username,
+  :presence => true,
+  :uniqueness => {
+    :case_sensitive => false
+  }
+
+  validates :email,
   :presence => true,
   :uniqueness => {
     :case_sensitive => false
