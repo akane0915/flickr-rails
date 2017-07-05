@@ -1,0 +1,19 @@
+<h1>New Image</h1>
+
+<% if @image.errors.any? %>
+  <h3>Oops there were some errors. Please try again:</h3>
+  <ul>
+    <% @image.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for [@user, @image] do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <br><br>
+  <%= f.file_field :picture %>
+  <br>
+  <%= f.submit  %>
+<% end %>

@@ -2,4 +2,8 @@
 
   <% @images.each do |image|%>
     <p><%= image.title %></p>
+    <p><%= image_tag(image.picture.url(:large)) %></p>
+
   <% end %>
+
+  <%= link_to "Add an Image", new_user_image_path(@user) %>
