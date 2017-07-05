@@ -1,1 +1,6 @@
-<h1>home</h1>
+
+<% if current_user %>
+  <%= render user_images_path(current_user) %>
+<% else %>
+  <h1>blah</h1>
+<% end %>
