@@ -1,0 +1,7 @@
+<h1><%= @image.title %></h1>
+<%= image_tag @image.picture.url(:medium) %>
+
+<br>
+
+<%= link_to "Delete", user_image_path(@user, @image), method: :delete %>
+<%= link_to "Edit", edit_user_image_path(@user, @image) %>

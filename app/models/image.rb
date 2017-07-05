@@ -1,7 +1,7 @@
 class Image < ApplicationRecord
   belongs_to :user
 
-  has_attached_file :picture, styles: {large: "500x500>", medium: "300x300>" }, :default_url => "/images/:style/missing.png"
+  has_attached_file :picture, styles: {large: "500x500#", medium: "300x300#" }
 
   validates :title, presence: true
 

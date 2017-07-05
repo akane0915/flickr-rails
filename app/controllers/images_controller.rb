@@ -4,7 +4,6 @@ class ImagesController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @images = @user.images.all
-binding.pry
   end
 
   def new
@@ -19,6 +18,33 @@ binding.pry
       redirect_to user_images_path(@user)
     else
       render :new
+    end
+  end
+
+  def show
+    @user = User.find(params[:user_id])
+    @image = Image.find(params[:id])
+  end
+
+  def destroy
+    user = User.find(params[:user_id])
+    Image.find(params[:id]).destroy
+    redirect_to user_images_path(user)
+  end
+
+  def edit
+    @user = User.find(params[:user_id])
+    @image = Image.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:user_id])
+    @image = Image.find(params[:id])
+    if @image.update(image_params)
+      flash[:notice] = "The image has been updated."
+      redirect_to user_images_path(@user)
+    else
+      render :edit
     end
   end
 
