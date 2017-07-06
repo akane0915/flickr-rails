@@ -47,6 +47,7 @@ group :development, :test do
   gem 'rb-readline'
   gem 'pry'
   gem 'shoulda-matchers'
+  gem 'capybara'
   gem 'simplecov', require: false
 end
 

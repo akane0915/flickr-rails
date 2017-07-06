@@ -12,6 +12,7 @@
 # the additional setup, and require it from the spec files that actually need
 # it.
 
+
 require 'simplecov'
 require "paperclip/matchers"
 SimpleCov.start 'rails'
@@ -21,6 +22,7 @@ RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
+
   config.include Paperclip::Shoulda::Matchers
   config.expect_with :rspec do |expectations|
     # This option will default to `true` in RSpec 4. It makes the `description`
