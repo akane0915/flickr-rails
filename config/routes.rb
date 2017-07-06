@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   resources :home, :only => [:index]
 
-  resources :users, only: [:show] do
+  resources :users, only: [:show, :index, :destroy] do
     resources :images
   end
 end

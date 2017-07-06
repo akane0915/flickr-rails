@@ -10,15 +10,21 @@
 
   <body>
     <div class="jumbotron">
-      <h1>Flickr</h1>
+      <h1><%= link_to "Flickr", root_path %></h1>
     </div>
-    <% if current_user %>
-      <%= image_tag(current_user.avatar.url(:thumb), class: "avatar-img") %> | <%= current_user.username %> | <%= link_to "Edit Account", edit_user_registration_path %> | <%= link_to "Sign out", destroy_user_session_path, method: 'delete' %>
-    <% else %>
-      <%= link_to "Sign up", new_user_registration_path %> | <%= link_to "Sign in", new_user_session_path %>
-    <% end %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <div class="container">
+      <% if current_user %>
+        <%= image_tag(current_user.avatar.url(:thumb), class: "avatar-img") %> | <%= current_user.username %> | <%= link_to "Edit Account", edit_user_registration_path %> | <%= link_to "Sign out", destroy_user_session_path, method: 'delete' %>
+      <% else %>
+        <%= link_to "Sign up", new_user_registration_path %> | <%= link_to "Sign in", new_user_session_path %>
+      <% end %>
+      <br>
+      <% if current_user && current_user.admin? %>
+        <%= link_to "Admin Page", users_path %>
+      <% end %>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <%= yield %>
+    </div>
   </body>
 </html>

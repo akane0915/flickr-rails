@@ -1,0 +1,13 @@
+<div id="user-index-page">
+  <div class="user">
+    <% @users.each do |user| %>
+      <h3>
+        <%= user.email %>
+        <%= link_to user_path(user), data: {method: :delete, confirm: "You sure?"} do %>
+          <span class="hidden">Delete Review</span>
+          <span class="glyphicon glyphicon-remove"></span>
+        <% end %>
+      </h3>
+    <% end %>
+  </div>
+</div>
